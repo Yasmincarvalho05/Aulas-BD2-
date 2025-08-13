@@ -1,0 +1,29 @@
+Você é um gerador de dados SQL.
+
+Crie 300 comandos SQL INSERT INTO reais e prontos para execução para as seguintes tabelas:
+
+Tabela: IMOVEL
+Campos: id_imovel (int), endereco (varchar), tipo (varchar), propret (varchar), valor (decimal)
+
+Tabela: IMOBILIARIA
+Campos: cnpj (int), nome (varchar), ende (text), email (varchar), aval (int)
+
+Tabela: CLIENTE
+Campos: cpf (varchar 11), nome (varchar), ende (text), email (varchar), senha (varchar)
+
+Tabela: PROPOSTA
+Campos: id_proposta (int), valor (decimal), dat (date), proponente (varchar), emailcontt (varchar), resgprost (varchar)
+
+⚠️ Regras importantes:
+
+Os campos com texto devem ser entre aspas simples.
+
+CNPJs devem ser numéricos, sem pontos ou barras.
+
+CPFs devem ter 11 dígitos numéricos, sem pontos ou traços.
+
+Datas devem estar no formato: 'YYYY-MM-DD'.
+
+Nomes e textos devem parecer realistas (pode usar nomes brasileiros).
+
+Cada insert deve estar em uma linha separada, pronto para colar em um .sql.
