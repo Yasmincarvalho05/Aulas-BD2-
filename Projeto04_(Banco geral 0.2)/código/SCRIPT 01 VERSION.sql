@@ -2105,3 +2105,45 @@ INSERT INTO COMPRA (valpag, nomecomprad, metpag) VALUES (505801.34, 'Amanda Pere
 INSERT INTO COMPRA (valpag, nomecomprad, metpag) VALUES (825202.31, 'Rafael Santos', 'Transferência');
 INSERT INTO COMPRA (valpag, nomecomprad, metpag) VALUES (830371.65, 'Rafael Santos', 'Dinheiro');
 INSERT INTO COMPRA (valpag, nomecomprad, metpag) VALUES (469373.44, 'André Silva', 'Cartão de Débito');
+
+USE geral_sala;
+
+-- relatorio 1
+SELECT endereco, COUNT(*) AS total
+FROM IMOVEL
+WHERE tipo = 'Aluguel'
+GROUP BY endereco
+ORDER BY total DESC;
+
+-- relatorio 2  
+SELECT 
+    ROUND(AVG(valor), 2) AS media_valor,
+    MIN(valor) AS menor_valor,
+    MAX(valor) AS maior_valor
+FROM IMOVEL
+WHERE tipo = 'Venda';
+
+--  relatorio 3
+SELECT c.cpf, c.nome, COUNT(*) AS total_compras
+FROM COMPRA co
+JOIN CLIENTE c ON co.nomecomprad = c.nome
+GROUP BY c.cpf, c.nome
+HAVING COUNT(*) > 1;
+
+-- relatorio 4 
+SELECT COUNT(*) AS total_quartos_3_ou_mais
+FROM IMOVEL
+WHERE quartos >= 3;
+SELECT 
+    ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM IMOVEL), 2) AS percentual_quartos_3_ou_mais
+FROM IMOVEL
+WHERE quartos >= 3;
+
+-- relatorio 5 
+SELECT IMOBILIARIA.nome, COUNT(*) AS total_imoveis
+FROM ANUNCIA
+JOIN IMOBILIARIA ON ANUNCIA.cnpj = IMOBILIARIA.cnpj
+GROUP BY IMOBILIARIA.nome
+ORDER BY total_imoveis DESC
+LIMIT 1;
+
